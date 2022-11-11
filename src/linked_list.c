@@ -31,10 +31,11 @@ void print_list(node *p) {
   if(p == NULL) {
     return;
 
-    //Ellers skal 
+    //Ellers skal jeg print værdien af noden jeg står på og lave recursion, så print_list(p->next).
   } else {
     printf("%d ", p->value);
     print_list(p->next);
+
     return;
   }
 }
@@ -42,9 +43,11 @@ void print_list(node *p) {
 int sum_squares(node *p) {
   // Add your code for excercise 2
   // You can find the tests in tests.cpp
+  //Basecase er at P == NULL.
   if(p == NULL){
     return 0;
 
+  //Ellers skal jeg gange p->value med sig selv og lægge den sammen med recursion steppet sum_squares(p->next).
   } else {
     return p->value*p->value + sum_squares(p->next);
   }
@@ -56,8 +59,11 @@ typedef int (*fn_int_to_int)(int);
 
 node *map(node *p, fn_int_to_int f) { 
   // Add your code for excercise 3
+  //Basecase er p == NULL.
   if (p == NULL) {
     return NULL;
+
+    //Ellers skal jeg køre make_node, med f kørt på p->value, som værdien og map(p->next,f) som den næste pointer.
   } else {
     return make_node(f(p->value),map(p->next, f));
   } 
